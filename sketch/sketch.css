@@ -1,0 +1,20 @@
+#sketch {
+	width: 100%;
+	height: 100%;
+}
+
+ul#sketch_palette {
+
+}
+
+ul#sketch_palette li {
+	border: 1px solid darkgray;
+	display: block;
+	height: 2em;
+	width: 2em;
+	margin-right: 0.2em;
+}
+
+ul#sketch_palette li.selected {
+	border: 3px solid darkgray;
+}

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style/grid.css">
     <link rel="stylesheet" type="text/css" href="style/dock.css">
     <link rel="stylesheet" type="text/css" href="everything.me/css/everything.me.css">
+    <link rel="stylesheet" type="text/css" href="sketch/sketch.css">
 
     <!-- Shared code -->
     <script type="text/javascript" src="shared/js/l10n.js"></script>
@@ -47,6 +48,9 @@
     <script type="text/javascript" defer src="everything.me/js/everything.me.js"></script>
     <script type="text/javascript" defer src="js/homescreen.js"></script>
     <script type="text/javascript" defer src="js/configurator.js"></script>
+    <script type="text/javascript" defer src="sketch/jquery.lib.js"></script>
+    <script type="text/javascript" defer src="sketch/sketch.lib.js"></script>
+    <script type="text/javascript" defer src="sketch/sketchscreen.js"></script>
 
     <link rel="resource" type="application/l10n" href="locales/locales.ini">
 
@@ -82,6 +86,10 @@
     <div id="icongrid" class="apps" role="main"></div>
 
     <footer id="footer">
+    	<div id="sketch">
+    		<ul id="sketch_palette"></ul>
+    		<canvas id="simple_sketch"></canvas>
+    	</div>
       <div class="dockWrapper"></div>
     </footer>
     <div id="repaint-helper"></div>
