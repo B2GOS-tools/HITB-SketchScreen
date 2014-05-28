@@ -56,18 +56,20 @@ var Configurator = (function() {
 
   function onErrorInitJSON(e) {
     conf = {};
+    console.log(e)
     console.error('Failed parsing homescreen configuration file: ' + e);
     startHomescreenByDefault();
     loadSingleVariantConf();
   }
 
   function loadFile(file, successCallback, errorCallback) {
-
+    console.log(file)
     try {
       var xhr = new XMLHttpRequest();
       xhr.overrideMimeType('application/json');
       xhr.open('GET', file, true);
       xhr.send(null);
+      console.log(file)
 
       xhr.onload = function _xhrOnLoadFile(evt) {
         try {
