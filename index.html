@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="style/dock.css">
     <link rel="stylesheet" type="text/css" href="everything.me/css/everything.me.css">
     <link rel="stylesheet" type="text/css" href="sketch/sketch.css">
+    <link rel="stylesheet" type="text/css" href="sketch/glyphs.css">
 
     <!-- Shared code -->
     <script type="text/javascript" src="shared/js/l10n.js"></script>
@@ -88,7 +89,11 @@
     <footer id="footer">
     	<div id="sketch">
     		<ul id="sketch_palette"></ul>
-    		<canvas id="simple_sketch"></canvas>
+    		<div id="sketch_actions">
+    			<a href="#" id="sketch_trash"><i class="icon icon-trash"></i> bla bla</a>
+    			<a href="#" id="sketch_submit"><i class="icon icon-upload"></i> bla bla</a>
+    		</div>
+    		<canvas id="sketch_surface"></canvas>
     	</div>
       <div class="dockWrapper"></div>
     </footer>

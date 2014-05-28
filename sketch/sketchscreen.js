@@ -1,14 +1,6 @@
 window.onload = function (){
   (function($) {
 
-  	// LIB
-  	
-  	var change_color = function(elem) {
-  		
-  	}
-
-
-
   	// MAIN
 
   	var palette = ['#000000', '#efefef', '#99a5ad', '#7d6360', '#9a8c82'];
@@ -17,10 +9,18 @@ window.onload = function (){
   		var color = $('<li>')
   		$(color).css('background-color', palette[code]);
   		$('#sketch ul').append(color)
-  		$(color).click(change_color)
-  	}
+  		$(color).append($('<a href="#sketch_surface" data-color="'+palette[code]+'">'))
 
-    $('#simple_sketch').sketch();
+  		// jQuery click event not working :/
+  		$(color)[0].addEventListener('click', function() {
+  			$("#sketch_palette li").removeClass('selected')
+  			$(this).addClass('selected')
+  		});
+	}
+
+	$($("#sketch_palette li")[0]).addClass("selected")
+
+    $('#sketch_surface').sketch();
 
 
 
