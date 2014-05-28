@@ -1,0 +1,27 @@
+{
+  "name": "FractalScreen",
+  "description": "FirefoxOS Homescreen with fractals!",
+  "launch_path": "/index.html",
+  "type": "certified",
+  "role": "homescreen",
+  "developer": {
+    "name": "Jan Laan, Cedric Van Bockhaven",
+    "url": "https://github.com/c3c/HITB-FF"
+  },
+  "permissions": {
+    "webapps-manage":{}
+  },
+  "locales": {
+    "en-US": {
+    "name": "FractalScreen",
+    "description": "FirefoxOS Homescreen with fractals!"
+    }
+  },
+  "default_locale": "en-US",
+  "icons": {
+    "30": "/style/icons/icon.png"
+  },
+  "orientation": "portrait-primary",
+  "activities": {},
+  "messages": []
+}
