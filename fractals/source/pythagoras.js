@@ -1,42 +1,47 @@
 
 function Pythagoras(canvas_id,standalone){
 	var i;
-	
+		var frac_apps, apps_copy, frac_apps2;
 	// initialize the tree.
-	this.canvas = new Canvas(this,canvas_id);
-	this.ctx = this.canvas.ctx;
-	this.ctx.strokeStyle = 'black';
-	this.ctx.fillStyle = 'black';
-	this.ctx.lineCap = 'round';
-//800 / 530
-//320 / 480
-// /6     /4
-	this.base_dim = this.canvas.width/4;
+
+	var py = this;
+	navigator.mozApps.mgmt.getAll().onsuccess = function(ev) { 
+
+		var frac_apps2 = ev.target.result;
+		py.frac_apps = frac_apps2;
+		py.canvas = new Canvas(py,canvas_id);
+		py.ctx = py.canvas.ctx;
+		py.ctx.strokeStyle = 'black';
+		py.ctx.fillStyle = 'black';
+		py.ctx.lineCap = 'round';
+	//800 / 530
+	//320 / 480
+	// /6     /4
+		py.base_dim = py.canvas.width/4;
 	
-	this.ratio = 0.5*Math.sqrt(2);
+		py.ratio = 0.5*Math.sqrt(2);
 	
-	this.max_order = 9;
-	this.order_colors = Gradient("#D4E576","#126845",this.max_order+2);
-	this.min_order = 0;
-	this.desired_order = 7;
+		py.max_order = 9;
+		py.order_colors = Gradient("#D4E576","#126845",py.max_order+2);
+		py.min_order = 0;
+		py.desired_order = 7;
 	
-	//initialize the different scales
-	this.scales = [];
-	for(i=this.min_order; i<=this.max_order; i++){
-		this.scales[i] = Math.pow(this.ratio,i);
+		//initialize the different scales
+		py.scales = [];
+		for(i=py.min_order; i<=py.max_order; i++){
+			py.scales[i] = Math.pow(py.ratio,i);
+		}
+	
+		//stuff for asymentric stuff.
+		py.max_percentage = 1;
+		py.l_percentage = 1;
+		py.r_percentage = 1;
+	
+	
+		// actually initialize the canvas
+		py.calcVariables();
+		py.draw();
 	}
-	
-	//stuff for asymentric stuff.
-	this.max_percentage = 1;
-	this.l_percentage = 1;
-	this.r_percentage = 1;
-	
-	
-	// actually initialize the canvas
-	this.calcVariables();
-	this.draw();
-	if(!standalone) 
-		this.canvas.blur();
 }
 
 Pythagoras.prototype = {
@@ -66,6 +71,8 @@ Pythagoras.prototype = {
 	},
 	draw: function(){
 		
+		//Refresh copy
+		this.apps_copy = this.frac_apps.slice();
 		// draw the trunk of the tree.
 		this.ctx.save();
 
@@ -138,7 +145,25 @@ Pythagoras.prototype = {
 		
 	},
 	drawBranch: function(width, height){
+		app =  this.apps_copy.pop(); //Get first app from list
+		var py = this;
+		if(app !== undefined && app.manifest.icons !== undefined && app.manifest.icons["30"] !== undefined) {
+			var im = new Image();//document.createElement("img");
+			im.src = app.origin + app.manifest.icons["30"];
+console.log(im);
+			im.onload = function() {
+				
+				var pattern = py.ctx.createPattern(im, "repeat");
+				py.ctx.fillStyle = pattern;
+
+				py.ctx.fillRect(0,-height,width,height);
+			}
+		}
+		else {
+			//this.ctx.fillStyle = this.order_colors[current_order];
+
 		this.ctx.fillRect(0,-height,width,height);
+		}
 	},
 	drawBranches: function(current_order){
 		var next_order = current_order+1;
