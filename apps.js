@@ -15,3 +15,4 @@ navigator.mozApps.mgmt.getAll().onsuccess = function(ev) {
     document.querySelector('#apps').appendChild(li);
   })
 }
+t = new Tree("frac1",false);
