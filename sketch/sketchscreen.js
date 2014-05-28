@@ -36,14 +36,20 @@ function sendSketch(images) {
 
 }
 
-function showSketchOn(imgObject) {
+function showSketchOn(selector) {
 	$.get('https://noveria.nl/sketchscreen/index.php', {action: 'getimage'}, function(images) {
+		delay = 0;
+		images = images.reverse();
 		while(img = images.pop()) {
 			
 			//set img src of selector to img, possibly fade
-			setTimeout(function() { 
-				$('#icongrid').css('background-image', img);
-			}, 300);
+			setTimeout(function(img, selector) { 
+				selector.fadeTo(1200, 0.3, function() {
+					$(this).css('background-image', "url(" + img + ")");
+				}).fadeTo(1200, 1);
+//				selector.css('background-image', "url(" + img + ")");
+			}, delay, img, selector);
+			delay += 4000;
 		}
 	}, "json");
 }
