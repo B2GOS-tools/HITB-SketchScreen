@@ -39,7 +39,7 @@ window.onload = function (){
 	});
 
     $('#sketch_surface').sketch();
-    showSketchOn($('#icongrid'))
+    showSketchOn($('#bg-overlay'))
 
     function clearSketch() {
 		$('#sketch_surface').data('sketch').actions = []
@@ -74,7 +74,7 @@ window.onload = function (){
 				delay += 4000;
 			}
 		}, "json");
-		setTimeout(showSketchOn, 60000, selector)
+		setTimeout(showSketchOn, 30000, selector)
 	}
 
   })(jQuery);
