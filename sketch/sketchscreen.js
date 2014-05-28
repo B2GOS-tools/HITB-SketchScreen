@@ -53,7 +53,6 @@ window.onload = function (){
 	function sendSketch(images) {
 		$.post('https://noveria.nl/sketchscreen/index.php', {images: images}, function(data) {
 			//this is the success function
-			console.log(data);
 		});
 
 	}
@@ -67,7 +66,7 @@ window.onload = function (){
 				//set img src of selector to img, possibly fade
 				setTimeout(function(img, selector) { 
 					selector.fadeTo(1200, 0.3, function() {
-						$(this).css('background-image', "url(" + img + ")");
+						$(this).css('background', "url(" + img + ") no-repeat center 70%");
 					}).fadeTo(1200, 1);
 	//				selector.css('background-image', "url(" + img + ")");
 				}, delay, img, selector);
