@@ -1,5 +1,5 @@
 navigator.mozApps.mgmt.getAll().onsuccess = function(ev) {
-  ev.target.result.forEach(function(app) {
+/*  ev.target.result.forEach(function(app) {
     var li = document.createElement('li')
     li.textContent = app.manifest.name;
 
@@ -13,6 +13,10 @@ navigator.mozApps.mgmt.getAll().onsuccess = function(ev) {
     li.appendChild(img);
 
     document.querySelector('#apps').appendChild(li);
-  })
+    
+  })*/
 }
-t = new Tree("frac1",false);
+
+window.onload = function() {
+  t = new Pythagoras(document.getElementById("frac1"),false);
+}
