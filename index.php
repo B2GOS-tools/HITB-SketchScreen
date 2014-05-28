@@ -11,10 +11,18 @@ if(isset($_POST['images'])) {
 	$stmt->execute();
 }
 else if(isset($_GET['action']) && $_GET['action'] == 'getimage') {
-	$stmt = $PDO->prepare("SELECT data FROM images ORDER BY timestamp DESC LIMIT 1");
+	$stmt = $PDO->prepare("SELECT data FROM images ORDER BY timestamp DESC LIMIT 5");
 	$stmt->execute();
-	$data = $stmt->fetchColumn();
-	echo ($data);
+	$datas = array();
+	while($data = $stmt->fetchColumn()) {
+		if(sizeof($datas) < 5) {
+			$data_dec = json_decode($data);
+			foreach($data_dec as $d) {
+				$datas[] = $d;
+			}
+		}
+	}
+	echo (json_encode($datas));
 } 
 
 ?>
