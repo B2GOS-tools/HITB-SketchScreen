@@ -1,10 +1,15 @@
 #sketch {
 	width: 100%;
 	height: 100%;
+	position: relative;
 }
 
 ul#sketch_palette {
-
+	margin: 0;
+	padding: 1em;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 ul#sketch_palette li {
@@ -15,6 +20,33 @@ ul#sketch_palette li {
 	margin-right: 0.2em;
 }
 
+ul#sketch_palette li a {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
 ul#sketch_palette li.selected {
-	border: 3px solid darkgray;
+	border-bottom: 2px solid orange;
+}
+
+#sketch_actions {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: right;
+	padding: 1em;
+}
+
+#sketch_actions a {
+	background: rgba(255,255,255,0.3);
+	display: block;
+	padding: 0.3em;
+	border: 1px solid darkgray;
+	float: left;
+	margin-left: 0.5em;
+	color: black;
+	text-transform: uppercase;
+	text-decoration: none;
+	line-height: 1.7em;
 }
